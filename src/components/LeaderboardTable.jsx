@@ -23,6 +23,13 @@ export default function LeaderboardTable() {
       p.submissionType.toLowerCase().includes(search.toLowerCase()))
   );
 
+  const renderRank = rank => {
+    if (rank === 1) return "🥇";
+    if (rank === 2) return "🥈";
+    if (rank === 3) return "🥉";
+    return rank;
+  };
+
   return (
     <div className="mt-6 bg-slate-800 p-4 sm:p-6 rounded-2xl shadow-lg">
       {/* Search + Filter */}
@@ -34,7 +41,6 @@ export default function LeaderboardTable() {
           value={search}
           onChange={e => setSearch(e.target.value)}
         />
-
         <select
           className="px-4 py-2 rounded-md text-black"
           value={filter}
@@ -69,7 +75,7 @@ export default function LeaderboardTable() {
                   key={p.id}
                   className="border-b border-slate-700 hover:bg-slate-700/30 transition"
                 >
-                  <td className="py-2 px-3">{p.rank}</td>
+                  <td className="py-2 px-3">{renderRank(p.rank)}</td>
                   <td className="py-2 px-3">{p.name}</td>
                   <td className="py-2 px-3">{p.submissionType}</td>
                   <td className="py-2 px-3">{p.points}</td>
@@ -92,7 +98,7 @@ export default function LeaderboardTable() {
                         goodies ? "bg-purple-700" : "bg-gray-600"
                       }`}
                     >
-                      {goodies ? "🎁 Yes" : "🤞Next Up"}
+                      {goodies ? "🎁 Yes" : "🤞 Next Up"}
                     </span>
                   </td>
                 </tr>
