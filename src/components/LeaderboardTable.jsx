@@ -92,7 +92,7 @@ export default function LeaderboardTable() {
                         goodies ? "bg-purple-700" : "bg-gray-600"
                       }`}
                     >
-                      {goodies ? "🎁 Yes" : "🤞 Next Time"}
+                      {goodies ? " 🎁 Yes " : "🤞 Next Time"}
                     </span>
                   </td>
                 </tr>
