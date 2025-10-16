@@ -1,4 +1,4 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -6,4 +6,24 @@ body {
   background-color: #0f172a;
   color: white;
   font-family: 'Inter', sans-serif;
+} */
+
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #F6EFE6; /* lit-cream */
+  color: #5B3926; /* lit-brown */
+  font-family: 'Inter', sans-serif;
+}
+
+/* subtle scrollbar (optional) */
+::-webkit-scrollbar { height: 8px; width: 8px; }
+::-webkit-scrollbar-thumb {
+  background-color: #C35B3A; /* lit-terra */
+  border-radius: 10px;
 }
