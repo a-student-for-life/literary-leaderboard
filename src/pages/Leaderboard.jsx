@@ -46,7 +46,6 @@
 
 
 
-
 import LeaderboardTable from "../components/LeaderboardTable";
 import StatsCard from "../components/StatsCard";
 import { useEffect, useState } from "react";
@@ -72,17 +71,17 @@ export default function Leaderboard() {
   return (
     <div className="min-h-screen px-4 sm:px-8 py-10 bg-lit-cream">
       {/* Header with logo */}
-      <div className="flex flex-col sm:flex-row items-center sm:items-end justify-center gap-4 mb-8">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 text-center sm:text-left">
         <img
           src={logo}
           alt="LitSoc Logo"
-          className="h-20 sm:h-24 w-auto object-contain drop-shadow-md"
+          className="h-24 sm:h-28 lg:h-32 object-contain drop-shadow-md mx-auto sm:mx-0"
         />
-        <div className="text-center sm:text-left">
-          <h1 className="text-4xl sm:text-5xl font-bold text-lit-brown">
+        <div>
+          <h1 className="text-3xl sm:text-5xl font-bold text-lit-brown leading-tight">
             LitSoc Leaderboard ✍️
           </h1>
-          <p className="text-lit-terra mt-1 text-sm sm:text-base">
+          <p className="text-lit-terra mt-1 text-base sm:text-lg">
             Creativity isn’t measured… but here we try anyway.
           </p>
           <div className="mt-2 h-1 w-24 bg-lit-terra rounded-full mx-auto sm:mx-0" />
