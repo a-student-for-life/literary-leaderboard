@@ -130,9 +130,26 @@ export default function LeaderboardTable() {
     const fetchData = async () => {
       const querySnapshot = await getDocs(collection(db, "submissions"));
       const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      data.sort((a, b) => a.rank - b.rank);
+
+      // Sort by points descending
+      data.sort((a, b) => b.points - a.points);
+
+      // Assign ranks dynamically (ties get same rank)
+      let currentRank = 1;
+      let lastPoints = null;
+      data.forEach((p, index) => {
+        if (lastPoints !== null && p.points === lastPoints) {
+          p.rank = currentRank; // same rank for tie
+        } else {
+          currentRank = index + 1;
+          p.rank = currentRank;
+        }
+        lastPoints = p.points;
+      });
+
       setParticipants(data);
     };
+
     fetchData();
   }, []);
 
@@ -177,12 +194,24 @@ export default function LeaderboardTable() {
         <table className="min-w-[700px] w-full text-left border-collapse">
           <thead className="bg-lit-terra text-lit-cream rounded-t-lg">
             <tr>
-              <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide text-center min-w-[50px]">Rank</th>
-              <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide min-w-[120px]">Name</th>
-              <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide min-w-[80px]">Type</th>
-              <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide text-center min-w-[70px]">Points</th>
-              <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide min-w-[150px]">Status</th>
-              <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide text-center min-w-[100px]">Goodies</th>
+              <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide text-center min-w-[50px]">
+                Rank
+              </th>
+              <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide min-w-[120px]">
+                Name
+              </th>
+              <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide min-w-[80px]">
+                Type
+              </th>
+              <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide text-center min-w-[70px]">
+                Points
+              </th>
+              <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide min-w-[150px]">
+                Status
+              </th>
+              <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide text-center min-w-[100px]">
+                Goodies
+              </th>
             </tr>
           </thead>
           <tbody>
