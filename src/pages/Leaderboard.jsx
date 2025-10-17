@@ -96,9 +96,10 @@ export default function Leaderboard() {
       </div>
 
       {/* Leaderboard section title */}
-      <h2 className="text-2xl font-semibold mb-4 text-center text-lit-brown">
-        Leaderboard — Prose & Poetry
-      </h2>
+<h2 className="text-xl sm:text-2xl font-serif font-bold mb-4 text-center text-lit-brown tracking-tight">
+  Leaderboard — Prose & Poetry
+</h2>
+
 
       {/* Leaderboard Table */}
       <LeaderboardTable />
