@@ -117,6 +117,156 @@
 
 
 
+// import { useEffect, useState } from "react";
+// import { collection, getDocs } from "firebase/firestore";
+// import { db } from "../firebase";
+
+// export default function LeaderboardTable() {
+//   const [participants, setParticipants] = useState([]);
+//   const [search, setSearch] = useState("");
+//   const [filter, setFilter] = useState("All");
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const querySnapshot = await getDocs(collection(db, "submissions"));
+//       const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+//       // Sort by points descending
+//       data.sort((a, b) => b.points - a.points);
+
+//       // Assign ranks dynamically (ties get same rank)
+//       let currentRank = 1;
+//       let lastPoints = null;
+//       data.forEach((p, index) => {
+//         if (lastPoints !== null && p.points === lastPoints) {
+//           p.rank = currentRank; // same rank for tie
+//         } else {
+//           currentRank = index + 1;
+//           p.rank = currentRank;
+//         }
+//         lastPoints = p.points;
+//       });
+
+//       setParticipants(data);
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   const filtered = participants.filter(
+//     p =>
+//       (filter === "All" || p.submissionType === filter) &&
+//       (p.name.toLowerCase().includes(search.toLowerCase()) ||
+//         p.submissionType.toLowerCase().includes(search.toLowerCase()))
+//   );
+
+//   const renderRank = rank => {
+//     if (rank === 1) return "🥇";
+//     if (rank === 2) return "🥈";
+//     if (rank === 3) return "🥉";
+//     return rank;
+//   };
+
+//   return (
+//     <div className="mt-6 bg-lit-cream p-4 sm:p-6 rounded-2xl shadow-xl border border-lit-muted">
+//       {/* Search + Filter */}
+//       <div className="flex flex-col sm:flex-row justify-between mb-4 gap-2">
+//         <input
+//           type="text"
+//           placeholder="Search by name or type..."
+//           className="flex-1 px-4 py-2 rounded-md border border-lit-muted focus:ring-2 focus:ring-lit-terra focus:outline-none"
+//           value={search}
+//           onChange={e => setSearch(e.target.value)}
+//         />
+//         <select
+//           className="px-4 py-2 rounded-md border border-lit-muted focus:ring-2 focus:ring-lit-terra focus:outline-none"
+//           value={filter}
+//           onChange={e => setFilter(e.target.value)}
+//         >
+//           <option value="All">All</option>
+//           <option value="Prose">Prose</option>
+//           <option value="Poetry">Poetry</option>
+//         </select>
+//       </div>
+
+//       {/* Scrollable Table */}
+//       <div className="overflow-x-auto">
+//         <table className="min-w-[700px] w-full text-left border-collapse">
+//           <thead className="bg-lit-terra text-lit-cream rounded-t-lg">
+//             <tr>
+//               <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide text-center min-w-[50px]">
+//                 Rank
+//               </th>
+//               <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide min-w-[120px]">
+//                 Name
+//               </th>
+//               <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide min-w-[80px]">
+//                 Type
+//               </th>
+//               <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide text-center min-w-[70px]">
+//                 Points
+//               </th>
+//               <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide min-w-[150px]">
+//                 Status
+//               </th>
+//               <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide text-center min-w-[100px]">
+//                 Goodies
+//               </th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {filtered.map(p => {
+//               const status = p["status of recent work"];
+//               const goodies = p.goodies === true;
+
+//               const rowBg = p.rank <= 3 ? "bg-lit-gold/10" : "bg-transparent";
+
+//               return (
+//                 <tr
+//                   key={p.id}
+//                   className={`${rowBg} border-b border-lit-muted hover:bg-lit-terra/10 transition-all`}
+//                 >
+//                   <td className="py-2 px-3 text-center">{renderRank(p.rank)}</td>
+//                   <td className="py-2 px-3">{p.name}</td>
+//                   <td className="py-2 px-3">{p.submissionType}</td>
+//                   <td className="py-2 px-3 text-center">{p.points}</td>
+//                   <td className="py-2 px-3">
+//                     <span
+//                       className={`px-3 py-1 rounded-full text-sm font-medium ${
+//                         status === "Winner"
+//                           ? "bg-lit-gold text-lit-brown"
+//                           : status === "Reviewed"
+//                           ? "bg-lit-terra text-lit-cream"
+//                           : "bg-lit-muted text-lit-brown"
+//                       }`}
+//                     >
+//                       {status}
+//                     </span>
+//                   </td>
+//                   <td className="py-2 px-3 text-center">
+//                     <span
+//                       className={`px-3 py-1 rounded-full text-sm font-medium ${
+//                         goodies ? "bg-lit-brown text-lit-cream" : "bg-lit-muted text-lit-brown"
+//                       }`}
+//                     >
+//                       {goodies ? "🎁 Yes" : "Next Up"}
+//                     </span>
+//                   </td>
+//                 </tr>
+//               );
+//             })}
+//           </tbody>
+//         </table>
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+
+
+
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
@@ -157,7 +307,8 @@ export default function LeaderboardTable() {
     p =>
       (filter === "All" || p.submissionType === filter) &&
       (p.name.toLowerCase().includes(search.toLowerCase()) ||
-        p.submissionType.toLowerCase().includes(search.toLowerCase()))
+        p.submissionType.toLowerCase().includes(search.toLowerCase()) ||
+        (p.title && p.title.toLowerCase().includes(search.toLowerCase())))
   );
 
   const renderRank = rank => {
@@ -173,7 +324,7 @@ export default function LeaderboardTable() {
       <div className="flex flex-col sm:flex-row justify-between mb-4 gap-2">
         <input
           type="text"
-          placeholder="Search by name or type..."
+          placeholder="Search by name, type, or title..."
           className="flex-1 px-4 py-2 rounded-md border border-lit-muted focus:ring-2 focus:ring-lit-terra focus:outline-none"
           value={search}
           onChange={e => setSearch(e.target.value)}
@@ -191,7 +342,7 @@ export default function LeaderboardTable() {
 
       {/* Scrollable Table */}
       <div className="overflow-x-auto">
-        <table className="min-w-[700px] w-full text-left border-collapse">
+        <table className="min-w-[800px] w-full text-left border-collapse">
           <thead className="bg-lit-terra text-lit-cream rounded-t-lg">
             <tr>
               <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide text-center min-w-[50px]">
@@ -199,6 +350,9 @@ export default function LeaderboardTable() {
               </th>
               <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide min-w-[120px]">
                 Name
+              </th>
+              <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide min-w-[150px]">
+                Title
               </th>
               <th className="py-3 px-3 uppercase text-sm font-semibold tracking-wide min-w-[80px]">
                 Type
@@ -228,6 +382,7 @@ export default function LeaderboardTable() {
                 >
                   <td className="py-2 px-3 text-center">{renderRank(p.rank)}</td>
                   <td className="py-2 px-3">{p.name}</td>
+                  <td className="py-2 px-3">{p.title}</td> {/* New column */}
                   <td className="py-2 px-3">{p.submissionType}</td>
                   <td className="py-2 px-3 text-center">{p.points}</td>
                   <td className="py-2 px-3">
