@@ -713,7 +713,7 @@ export default function LeaderboardTable() {
                       {status}
                     </span>
                   </td>
-                  <td className="py-2 px-3 text-center">
+                  <td className="py-2 px-3 text-center whitespace-nowrap">
                     <span
                       className={`px-3 py-1 rounded-full text-sm font-medium font-serif ${
                         goodies ? "bg-lit-brown text-lit-cream" : "bg-lit-muted text-lit-brown"
