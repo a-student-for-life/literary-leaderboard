@@ -83,7 +83,7 @@ export default function Leaderboard() {
             LitSoc Leaderboard ✍️
           </h1>
           <p className="text-lit-terra mt-1 text-sm sm:text-base">
-            Prose & Poetry — friendly competition
+            Creativity isn’t measured… but here we try anyway.
           </p>
           <div className="mt-2 h-1 w-24 bg-lit-terra rounded-full mx-auto sm:mx-0" />
         </div>
