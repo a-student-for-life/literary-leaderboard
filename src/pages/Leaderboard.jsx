@@ -77,15 +77,16 @@ export default function Leaderboard() {
           alt="LitSoc Logo"
           className="h-24 sm:h-28 lg:h-32 object-contain drop-shadow-md mx-auto sm:mx-0"
         />
-        <div>
-          <h1 className="text-3xl sm:text-5xl font-bold text-lit-brown leading-tight">
-            LitSoc Leaderboard ✍️
-          </h1>
-          <p className="text-lit-terra mt-1 text-base sm:text-lg">
-            Creativity isn’t measured… but here we try anyway.
-          </p>
-          <div className="mt-2 h-1 w-24 bg-lit-terra rounded-full mx-auto sm:mx-0" />
-        </div>
+<div className="text-center sm:text-left">
+  <h1 className="text-3xl sm:text-5xl font-serif font-extrabold text-[#4B2E1C] leading-tight tracking-tight">
+    LitSoc Leaderboard ✍️
+  </h1>
+  <p className="text-[#C35B3A] mt-2 text-base sm:text-lg font-[500] font-[Playfair_Display] italic tracking-wide">
+    Creativity isn’t measured… but here we try anyway.
+  </p>
+  <div className="mt-3 h-1 w-24 bg-[#C35B3A] rounded-full mx-auto sm:mx-0" />
+</div>
+
       </div>
 
       {/* Stats cards */}
