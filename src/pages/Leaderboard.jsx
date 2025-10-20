@@ -148,7 +148,7 @@ export default function Leaderboard() {
   <h1 className="text-3xl sm:text-5xl font-serif font-extrabold text-[#4B2E1C] leading-tight tracking-tight">
     LitSoc Leaderboard ✍️
   </h1>
-  <p className="text-[#C35B3A] mt-1 text-base sm:text-lg font-[500] font-[Playfair_Display] italic tracking-wide">
+  <p className="text-[#C35B3A] mt-0 text-base sm:text-lg font-[500] font-[Playfair_Display] italic tracking-wide">
     Creativity isn’t measured… but here we try anyway.
   </p>
 
