@@ -86,7 +86,7 @@ export default function StatsCard({ title, value, className }) {
       transition-all duration-500 ease-out
       ${className}`}
     >
-      <p className="text-[#C35B3A] text-lg font-semibold tracking-wide italic font-serif">
+      <p className="text-[#8E3F29] text-lg font-semibold tracking-wide italic font-serif">
         {title}
       </p>
       <h2 className="text-4xl font-bold font-serif mt-1 text-[#4b2e1c] drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
