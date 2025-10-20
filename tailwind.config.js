@@ -27,6 +27,7 @@ export default {
       colors: {
         'lit-brown': '#5B3926',
         'lit-terra': '#C35B3A',
+        'dark-terra': '#8E3F29',
         'lit-cream': '#F6EFE6',
         'lit-gold': '#D9A76C',
         'lit-muted': '#BFB1A3',
