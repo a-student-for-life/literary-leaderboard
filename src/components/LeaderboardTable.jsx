@@ -1360,7 +1360,7 @@ export default function LeaderboardTable() {
     animate={{ scale: isLiked ? [1, 1.3, 1] : 1 }}
     transition={{ duration: 0.3 }}
     onClick={() => handleLikeToggle(p.id)}
-    className="px-3 py-1 rounded-lg font-semibold transition flex items-center justify-center gap-2 bg-lit-gold text-lit-brown hover:bg-dark-terra hover:text-white"
+    className="px-3 py-1 rounded-lg font-semibold transition flex items-center justify-center gap-2 bg-lit-gold text-lit-brown hover:bg-lit-gold hover:text-lit-brown"
   >
     {isLiked ? (
       <FaHeart className="text-red-600" />
