@@ -1419,7 +1419,7 @@ import {
   arrayRemove,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 export default function LeaderboardTable() {
