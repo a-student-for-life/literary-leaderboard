@@ -14,6 +14,7 @@
 
 import Leaderboard from "./pages/Leaderboard";
 import "./App.css";
+import { Analytics } from "@vercel/analytics/react"; // 👈 import here
 
 function App() {
   return (
@@ -25,11 +26,16 @@ function App() {
 
       {/* Footer */}
       <footer className="mt-10 text-sm text-[#5B3926]/80 pb-4 text-center">
-        <p>© {new Date().getFullYear()} LitSoc | Crafted with ❤️ | Keep Writing • Keep Dreaming
- </p>
+        <p>
+          © {new Date().getFullYear()} LitSoc | Crafted with ❤️ | Keep Writing • Keep Dreaming
+        </p>
       </footer>
+
+      {/* 👇 Add Analytics at the very bottom */}
+      <Analytics />
     </div>
   );
 }
 
 export default App;
+
