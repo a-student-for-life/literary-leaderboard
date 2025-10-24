@@ -86,7 +86,7 @@ export default function StatsCard({ title, value, className }) {
       transition-all duration-500 ease-out
       ${className}`}
     >
-      <p className="text-[#8E3F29] text-lg font-semibold tracking-wide italic font-serif">
+      <p className="text-[#8E3F29] text-md font-semibold uppercase tracking-wide font-serif">
         {title}
       </p>
       <h2 className="text-4xl font-bold font-serif mt-1 text-[#4b2e1c] drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
@@ -97,47 +97,6 @@ export default function StatsCard({ title, value, className }) {
 }
 
 
-// export default function StatsCard({ title, value, className }) {
-//   return (
-//     <div
-//       className={`flex flex-col items-center justify-center 
-//       bg-gradient-to-br from-[#f5e5d8] via-[#edd7bd] to-[#e5caa0]
-//       p-6 rounded-2xl text-center
-//       shadow-[0_8px_20px_rgba(195,91,58,0.35),0_4px_12px_rgba(233,168,124,0.25)]
-//       hover:shadow-[0_12px_32px_rgba(195,91,58,0.5),0_8px_24px_rgba(233,168,124,0.35)]
-//       hover:-translate-y-1.5
-//       transition-all duration-500 ease-out
-//       ${className}`}
-//     >
-//       <p className="text-[#C35B3A] text-lg font-semibold tracking-wide italic font-serif">
-//         {title}
-//       </p>
-//       <h2 className="text-4xl font-bold font-serif mt-1 text-[#4b2e1c] drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
-//         {value}
-//       </h2>
-//     </div>
-//   );
-// }
 
 
-// export default function StatsCard({ title, value, className }) {
-//   return (
-//     <div
-//       className={`flex flex-col items-center justify-center 
-//       bg-gradient-to-br from-[#f5e5d8] via-[#edd7bd] to-[#e5caa0]
-//       p-6 rounded-2xl text-center
-//       shadow-[0_8px_20px_rgba(139,54,25,0.6),0_4px_12px_rgba(100,35,15,0.45)]
-//       hover:shadow-[0_12px_32px_rgba(139,54,25,0.75),0_8px_24px_rgba(100,35,15,0.55)]
-//       hover:-translate-y-1.5
-//       transition-all duration-500 ease-out
-//       ${className}`}
-//     >
-//       <p className="text-[#C35B3A] text-lg font-semibold tracking-wide italic font-serif">
-//         {title}
-//       </p>
-//       <h2 className="text-4xl font-bold font-serif mt-1 text-[#4b2e1c] drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]">
-//         {value}
-//       </h2>
-//     </div>
-//   );
-// }
+
