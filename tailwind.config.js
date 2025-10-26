@@ -26,6 +26,7 @@ export default {
     extend: {
       colors: {
         'lit-brown': '#5B3926',
+        'dark-brown': '#302113ff',
         'lit-terra': '#C35B3A',
         'dark-terra': '#8E3F29',
         'lit-cream': '#F6EFE6',
@@ -34,6 +35,10 @@ export default {
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
+         header: ["'Playfair Display'", "serif"],
+        tagline: ["'Dancing Script'", "cursive"],
+        body: ["'Lora'", "serif"],
+        ui: ["'Poppins'", "sans-serif"],
       },
     },
   },

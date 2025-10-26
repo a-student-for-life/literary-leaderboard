@@ -14,7 +14,16 @@ body {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Dancing+Script:wght@400;700&family=Lora:wght@400;700&family=Poppins:wght@500;700&display=swap');
 
+:root {
+  --header-font: 'Playfair Display', serif;
+  --tagline-font: 'Dancing Script', cursive;
+  --body-font: 'Lora', serif;
+  --ui-font: 'Poppins', sans-serif;
+}
+
+/* set default body font (can be overridden) */
 body {
   background-color: #F6EFE6; /* lit-cream */
   color: #5B3926; /* lit-brown */

@@ -174,12 +174,40 @@ export default function Leaderboard() {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <h1 className="text-3xl sm:text-5xl font-serif font-extrabold text-[#4B2E1C] leading-tight tracking-tight">
-            LitSoc Leaderboard ✍️
-          </h1>
-          <p className="text-[#C35B3A] mt-0 text-base sm:text-lg font-[500] font-[Playfair_Display] italic tracking-wide">
-            Creativity isn’t measured… but here we try anyway.
-          </p>
+          <motion.h1
+  className="text-3xl sm:text-5xl font-bold mb-0 text-center tracking-wide"
+  style={{
+    fontFamily: "Sofia, 'Cinzel Decorative', cursive",
+    background: "linear-gradient(90deg, #4B2E1C, #C35B3A)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    textShadow: "0 2px 6px rgba(139, 69, 19, 0.4)"
+  }}
+  initial={{ opacity: 0, y: 10 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
+  viewport={{ once: true }}
+>
+  LitSoc Leaderboard 🪶
+</motion.h1>
+
+          {
+          
+          
+<p
+  className="text-[#C35B3A] mt-0 text-base sm:text-lg italic tracking-wide text-center sm:text-left"
+  style={{
+    fontFamily: "'Dancing Script', cursive",
+    fontWeight: 550,
+    fontSize: "1.44rem"
+  }}
+>
+  Creativity isn’t measured… but here we try anyway🎨
+</p>
+
+
+}
+
 
           {/* Instagram icon */}
           <div className="mt-1 flex justify-center sm:justify-start items-center gap-4">
@@ -218,15 +246,23 @@ export default function Leaderboard() {
       </motion.div>
 
       {/* Leaderboard section title */}
-      <motion.h2
-        className="text-xl sm:text-2xl font-serif font-bold mb-4 text-center text-dark-brown tracking-tight"
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
-        viewport={{ once: true }}
-      >
-        Leaderboard — Prose & Poetry
-      </motion.h2>
+<motion.h2
+    className="text-[#8E3F29] mt-0 text-base sm:text-lg italic tracking-wide text-center sm:text-center"
+  style={{
+    fontFamily: "'Courgette', cursive",
+    fontSize: "1.44rem"
+  }}
+  initial={{ opacity: 0, y: 10 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
+  viewport={{ once: true }}
+>
+  Leaderboard - Prose & Poetry🏆
+</motion.h2>
+
+
+
+
 
       {/* Leaderboard Table */}
       <motion.div
