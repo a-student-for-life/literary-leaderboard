@@ -249,7 +249,7 @@ export default function Leaderboard() {
 <motion.h2
     className="text-[#8E3F29] mt-0 text-base sm:text-lg italic tracking-wide text-center sm:text-center"
   style={{
-    fontFamily: "'Courgette', cursive",
+    fontFamily: "'Courgette', sans",
     fontSize: "1.44rem"
   }}
   initial={{ opacity: 0, y: 10 }}

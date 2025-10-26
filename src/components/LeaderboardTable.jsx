@@ -1875,33 +1875,32 @@ export default function LeaderboardTable() {
                   {/* Name */}
                   <td
                     className="py-2 px-3 text-lg font-medium tracking-wide"
-                    style={{ fontFamily: "'Courgette', serif" }}
+                    style={{ fontFamily: "'Spectral', serif" }}
                   >
                   {p.name}
                   </td>
 
                   {/* Title */}
-                  <td
-                    className="py-2 px-3 italic text-dark-terra hover:underline"
-                    style={{ fontFamily: "Dancing Script', cursive" }}
-                  >
-                  {p.title?.title ? (
-                 <a
-                  href={p.title.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                 >
-                {p.title.title}
-                </a>
-                ) : (
-                 "—"
-                )}
-                </td>
+                
+                  <td className="py-2 px-3 font-body italic">
+                    {p.title?.title ? (
+                      <a
+                        href={p.title.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-dark-terra hover:underline"
+                      >
+                        {p.title.title}
+                      </a>
+                    ) : (
+                      "—"
+                    )}
+                  </td>
 
                   {/* Type */}
                   <td
                     className="py-2 px-3 font-medium tracking-wide"
-                    style={{ fontFamily: "'Tangerine', serif" }}
+                    style={{ fontFamily: "'Cinzel', serif" }}
                   >
                     {p.submissionType}
                   </td>
