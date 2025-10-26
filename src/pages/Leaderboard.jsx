@@ -175,9 +175,9 @@ export default function Leaderboard() {
           viewport={{ once: true }}
         >
           <motion.h1
-  className="text-3xl sm:text-5xl font-bold mb-0 text-center tracking-wide"
+  className="text-2xl sm:text-5xl font-bold mb-0 text-center tracking-wide"
   style={{
-    fontFamily: "Sofia, 'Cinzel Decorative', cursive",
+    fontFamily: "'Cinzel Decorative', cursive",
     background: "linear-gradient(90deg, #4B2E1C, #C35B3A)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
@@ -188,7 +188,7 @@ export default function Leaderboard() {
   transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
   viewport={{ once: true }}
 >
-  LitSoc Leaderboard 🪶
+  LitSoc Leaderboard🪶
 </motion.h1>
 
           {
