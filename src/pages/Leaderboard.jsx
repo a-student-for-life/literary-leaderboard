@@ -175,7 +175,7 @@ export default function Leaderboard() {
           viewport={{ once: true }}
         >
           <motion.h1
-  className="text-[1.67rem] sm:text-4xl font-bold mb-0 text-center tracking-wide"
+  className="text-2xl scale-[1.09] tracking-wide sm:text-4xl font-bold mb-0 text-center tracking-wide"
   style={{
     fontFamily: "'Cinzel Decorative', cursive",
     background: "linear-gradient(90deg, #4B2E1C, #C35B3A)",
