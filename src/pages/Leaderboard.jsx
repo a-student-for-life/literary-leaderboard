@@ -27,7 +27,7 @@ export default function Leaderboard() {
 
   return (
     <div className="relative min-h-screen px-4 sm:px-8 py-10 overflow-hidden bg-lit-cream">
-
+       
       {/* 🌈 Animated Gradient Background */}
       <motion.div
         className="absolute inset-0 -z-10 opacity-40"
