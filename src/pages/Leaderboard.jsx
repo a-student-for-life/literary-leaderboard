@@ -163,6 +163,60 @@ export default function Leaderboard() {
       >
         <LeaderboardTable />
       </motion.div>
+
+
+{/* Support Section (Refined Blend Version) */}
+<motion.section
+  className="mt-20 mb-10 py-10 px-6 rounded-2xl shadow-sm bg-gradient-to-r 
+  from-[#FAEBD7]/70 via-[#F1D7BA]/60 to-[#FAEBD7]/70 text-center max-w-3xl mx-auto border border-[#E2B091]/40 backdrop-blur-sm"
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.9, ease: "easeOut" }}
+  viewport={{ once: true }}
+>
+  <h2
+    className="text-2xl sm:text-3xl mb-2 font-bold"
+    style={{
+      fontFamily: "'Cinzel Decorative', cursive",
+      background: "linear-gradient(90deg, #4B2E1C, #C35B3A)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      textShadow: "0 1px 5px rgba(139, 69, 19, 0.25)",
+    }}
+  >
+    Support LitSoc 🍵
+  </h2>
+
+  <p
+    className="text-[#C35B3A]/90 mt-0 text-base sm:text-lg italic tracking-wide text-center"
+    style={{
+      fontFamily: "'Dancing Script', cursive",
+      fontWeight: 550,
+      fontSize: "1.4rem",
+    }}
+  >
+    Love what we do? Support our mission to uplift aspiring writers and poets.
+    Your contribution fuels the dreams behind every word written.
+  </p>
+
+  <motion.a
+    href="https://www.buymeacoffee.com/Litsoc"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block mt-4 px-6 py-3 rounded-full text-white font-semibold shadow-md hover:shadow-lg transition-all duration-300"
+    style={{
+      background: "linear-gradient(90deg, #C35B3A, #8E3F29)",
+      fontFamily: "'Marcellus SC', serif",
+    }}
+    whileHover={{ scale: 1.06, rotate: -1 }}
+    whileTap={{ scale: 0.97 }}
+  >
+    Support Us
+  </motion.a>
+</motion.section>
+
+
+
     </div>
   );
 }
