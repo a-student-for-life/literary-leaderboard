@@ -165,7 +165,7 @@ export default function Leaderboard() {
       </motion.div>
 
 
-{/* Support Section (Refined Blend Version) */}
+{/* Support Section (Refined Blend Version)
 <motion.section
   className="mt-20 mb-10 py-10 px-6 rounded-2xl shadow-sm bg-gradient-to-r 
   from-[#FAEBD7]/70 via-[#F1D7BA]/60 to-[#FAEBD7]/70 text-center max-w-3xl mx-auto border border-[#E2B091]/40 backdrop-blur-sm"
@@ -213,7 +213,7 @@ export default function Leaderboard() {
   >
     Support Us
   </motion.a>
-</motion.section>
+</motion.section> */}
 
 
 
