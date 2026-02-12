@@ -146,7 +146,7 @@ export default function Leaderboard() {
   transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
   viewport={{ once: true }}
 >
-  Leaderboard - Prose & Poetry🏆
+  Leaderboard - Words & Art🏆
 </motion.h2>
 
 

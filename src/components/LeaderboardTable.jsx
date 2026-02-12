@@ -164,7 +164,6 @@ export default function LeaderboardTable() {
           <tbody className="text-lit-brown text-base leading-relaxed">
             {filtered.map((p) => {
               const status = p["status of recent work"];
-              const goodies = p.goodies === true;
               const rowBg =
                 p.rank <= 3
                   ? "bg-lit-gold/10"
@@ -275,19 +274,19 @@ export default function LeaderboardTable() {
                     </span>
                   </td>
 
-                  {/* Goodies */}
+                  {/* Goodies - Automatically YES for Rank 1, 2, 3 */}
                   <td className="py-2 px-3 text-center whitespace-nowrap">
                     <span
                       className={`px-3 py-1 rounded-full text-sm font-medium ${
-                        goodies
+                        p.rank <= 3
                           ? "bg-lit-brown text-lit-cream"
                           : "bg-lit-muted text-lit-brown"
-                      }`}
-                      style={{ fontFamily: "'Tangerine', serif" }}
-                    >
-                      {goodies ? "🎁 Yes" : "Next Up"}
+                    }`}
+                    style={{ fontFamily: "'Tangerine', serif" }}
+                  >
+                    {p.rank <= 3 ? "🎁 Yes" : "Next Up"}
                     </span>
-                  </td>
+                </td>
                 </tr>
               );
             })}
