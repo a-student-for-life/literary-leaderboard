@@ -1,7 +1,7 @@
 
 
 
-import { FaClipboardList, FaBook, FaFeatherAlt } from "react-icons/fa";
+import { FaClipboardList, FaBook, FaFeatherAlt, FaPalette } from "react-icons/fa";
 
 export default function StatsCard({ title, value, className }) {
   // Choose icon based on title
@@ -13,6 +13,8 @@ export default function StatsCard({ title, value, className }) {
         return <FaBook className="text-[#C35B3A] w-6 h-6" />;
       case "Poetry Entries":
         return <FaFeatherAlt className="text-[#C35B3A] w-6 h-6" />;
+      case "Painting Entries":
+        return <FaPalette className="text-[#C35B3A] w-6 h-6" />;  
       default:
         return null;
     }

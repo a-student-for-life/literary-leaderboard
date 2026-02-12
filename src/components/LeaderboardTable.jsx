@@ -1,5 +1,4 @@
-
-
+import { FaHeart, FaRegHeart, FaFeatherAlt, FaBook, FaPalette } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import {
   collection,
@@ -13,7 +12,6 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import { motion } from "framer-motion";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 export default function LeaderboardTable() {
   const [participants, setParticipants] = useState([]);
@@ -105,6 +103,13 @@ export default function LeaderboardTable() {
     );
   });
 
+ const renderTypeIcon = (type) => {
+    if (type === "Poetry") return <FaFeatherAlt className="text-lit-terra inline mr-2" />;
+    if (type === "Prose") return <FaBook className="text-lit-terra inline mr-2" />;
+    if (type === "Painting") return <FaPalette className="text-lit-terra inline mr-2" />;
+    return null;
+  };
+
   const renderRank = (rank) => {
     if (rank === 1) return "🥇";
     if (rank === 2) return "🥈";
@@ -133,6 +138,7 @@ export default function LeaderboardTable() {
           <option value="All">All</option>
           <option value="Prose">Prose</option>
           <option value="Poetry">Poetry</option>
+          <option value="Painting">Painting</option>
         </select>
       </div>
 
@@ -209,9 +215,10 @@ export default function LeaderboardTable() {
 
                   {/* Type */}
                   <td
-                    className="py-2 px-3 font-medium tracking-wide"
+                    className="py-2 px-3 font-medium tracking-wide flex items-center"
                     style={{ fontFamily: "'Cinzel', serif" }}
                   >
+                    {renderTypeIcon(p.submissionType)}
                     {p.submissionType}
                   </td>
 

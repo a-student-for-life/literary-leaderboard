@@ -1,6 +1,3 @@
-
-
-
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
@@ -11,7 +8,7 @@ import logo from "../assets/litsoc-logo.png";
 import { FaInstagram } from "react-icons/fa";
 
 export default function Leaderboard() {
-  const [stats, setStats] = useState({ total: 0, prose: 0, poetry: 0 });
+  const [stats, setStats] = useState({ total: 0, prose: 0, poetry: 0, painting: 0});
 
   useEffect(() => {
     const fetchStats = async () => {
@@ -20,7 +17,8 @@ export default function Leaderboard() {
       const total = data.length;
       const prose = data.filter((d) => d.submissionType === "Prose").length;
       const poetry = data.filter((d) => d.submissionType === "Poetry").length;
-      setStats({ total, prose, poetry });
+      const painting = data.filter((d) => d.submissionType === "Painting").length;
+      setStats({ total, prose, poetry, painting });
     };
     fetchStats();
   }, []);
@@ -133,6 +131,7 @@ export default function Leaderboard() {
         <StatsCard className="flex-1" title="Total Submissions" value={stats.total} />
         <StatsCard className="flex-1" title="Prose Entries" value={stats.prose} />
         <StatsCard className="flex-1" title="Poetry Entries" value={stats.poetry} />
+        <StatsCard className="flex-1" title="Painting Entries" value={stats.painting} />
       </motion.div>
 
       {/* Leaderboard section title */}
