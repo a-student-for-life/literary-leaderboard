@@ -157,7 +157,7 @@ export default function LeaderboardTable() {
               <th className="py-3 px-3 text-center min-w-[70px]">Points</th>
               <th className="py-3 px-3 text-center min-w-[90px]">Likes</th>
               <th className="py-3 px-3 min-w-[150px]">Status</th>
-              <th className="py-3 px-3 text-center min-w-[100px]">Goodies</th>
+              <th className="py-3 px-3 text-center min-w-[100px]">Goodies✨</th>
             </tr>
           </thead>
 
