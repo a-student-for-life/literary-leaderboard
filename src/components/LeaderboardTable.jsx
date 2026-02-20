@@ -23,17 +23,19 @@ export default function LeaderboardTable() {
     const unsub = onSnapshot(collection(db, "submissions"), (snapshot) => {
       const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
+      // Sort by points highest to lowest
       data.sort((a, b) => b.points - a.points);
 
+      // --- DENSE RANKING LOGIC (1, 1, 2, 3...) ---
       let currentRank = 1;
       let lastPoints = null;
-      data.forEach((p, index) => {
-        if (lastPoints !== null && p.points === lastPoints) {
-          p.rank = currentRank;
-        } else {
-          currentRank = index + 1;
-          p.rank = currentRank;
+      
+      data.forEach((p) => {
+        // If it's not the very first item AND the points are lower than the last person's points
+        if (lastPoints !== null && p.points !== lastPoints) {
+          currentRank++; // Only go up by 1 rank
         }
+        p.rank = currentRank;
         lastPoints = p.points;
       });
 
@@ -103,7 +105,7 @@ export default function LeaderboardTable() {
     );
   });
 
- const renderTypeIcon = (type) => {
+  const renderTypeIcon = (type) => {
     if (type === "Poetry") return <FaFeatherAlt className="text-lit-terra inline mr-2" />;
     if (type === "Prose") return <FaBook className="text-lit-terra inline mr-2" />;
     if (type === "Painting") return <FaPalette className="text-lit-terra inline mr-2" />;
@@ -162,137 +164,137 @@ export default function LeaderboardTable() {
           </thead>
 
           <tbody className="text-lit-brown text-base leading-relaxed">
-{filtered.map((p) => {
-  const status = p["status of recent work"];
-  
-  // 1. DEFINE THE VARIABLE (Based ONLY on Database)
-  const goodies = p.goodies === true;
+            {filtered.map((p) => {
+              const status = p["status of recent work"];
+              
+              // MANUAL CONTROL: Goodies are ONLY true if you set them in DB
+              const goodies = p.goodies === true;
 
-  const rowBg =
-    p.rank <= 3
-      ? "bg-lit-gold/10"
-      : "even:bg-lit-cream/30 odd:bg-lit-cream/10";
+              const rowBg =
+                p.rank <= 3
+                  ? "bg-lit-gold/10"
+                  : "even:bg-lit-cream/30 odd:bg-lit-cream/10";
 
-  const currentUser =
-    localStorage.getItem("userEmail") ||
-    localStorage.getItem("deviceId");
-  const isLiked = p.likedByUsers?.includes(currentUser);
+              const currentUser =
+                localStorage.getItem("userEmail") ||
+                localStorage.getItem("deviceId");
+              const isLiked = p.likedByUsers?.includes(currentUser);
 
-  return (
-    <tr
-      key={p.id}
-      className={`${rowBg} border-b border-lit-muted hover:bg-lit-terra/10 hover:scale-[1.01] transition-all`}
-    >
-      {/* Rank */}
-      <td
-        className="py-2 px-3 text-center font-bold text-lg tracking-wide"
-        style={{ fontFamily: "'Cinzel Decorative', serif" }}
-      >
-        {renderRank(p.rank)}
-      </td>
+              return (
+                <tr
+                  key={p.id}
+                  className={`${rowBg} border-b border-lit-muted hover:bg-lit-terra/10 hover:scale-[1.01] transition-all`}
+                >
+                  {/* Rank */}
+                  <td
+                    className="py-2 px-3 text-center font-bold text-lg tracking-wide"
+                    style={{ fontFamily: "'Cinzel Decorative', serif" }}
+                  >
+                    {renderRank(p.rank)}
+                  </td>
 
-      {/* Name */}
-      <td
-        className="py-2 px-3 text-lg font-medium tracking-wide"
-        style={{ fontFamily: "'Spectral', serif" }}
-      >
-        {p.name}
-      </td>
+                  {/* Name */}
+                  <td
+                    className="py-2 px-3 text-lg font-medium tracking-wide"
+                    style={{ fontFamily: "'Spectral', serif" }}
+                  >
+                    {p.name}
+                  </td>
 
-      {/* Title */}
-      <td className="py-2 px-3 font-body italic">
-        {p.title?.title ? (
-          <a
-            href={p.title.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-dark-terra hover:underline"
-          >
-            {p.title.title}
-          </a>
-        ) : (
-          "—"
-        )}
-      </td>
+                  {/* Title */}
+                  <td className="py-2 px-3 font-body italic">
+                    {p.title?.title ? (
+                      <a
+                        href={p.title.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-dark-terra hover:underline"
+                      >
+                        {p.title.title}
+                      </a>
+                    ) : (
+                      "—"
+                    )}
+                  </td>
 
-      {/* Type */}
-      <td
-        className="py-2 px-3 font-medium tracking-wide flex items-center"
-        style={{ fontFamily: "'Cinzel', serif" }}
-      >
-        {renderTypeIcon(p.submissionType)}
-        {p.submissionType}
-      </td>
+                  {/* Type */}
+                  <td
+                    className="py-2 px-3 font-medium tracking-wide flex items-center"
+                    style={{ fontFamily: "'Cinzel', serif" }}
+                  >
+                    {renderTypeIcon(p.submissionType)}
+                    {p.submissionType}
+                  </td>
 
-      {/* Points */}
-      <td
-        className="py-2 px-3 text-center font-bold"
-        style={{ fontFamily: "'Cinzel Decorative', serif" }}
-      >
-        {p.points}
-      </td>
+                  {/* Points */}
+                  <td
+                    className="py-2 px-3 text-center font-bold"
+                    style={{ fontFamily: "'Cinzel Decorative', serif" }}
+                  >
+                    {p.points}
+                  </td>
 
-      {/* Likes */}
-      <td className="py-2 px-3 text-center flex justify-center">
-        <button
-          onClick={() => handleLikeToggle(p.id)}
-          className="px-3 py-1 rounded-lg font-medium transition flex items-center justify-center gap-2 bg-lit-gold text-lit-brown hover:bg-lit-gold/95"
-          style={{ fontFamily: "'Poppins', sans-serif" }}
-        >
-          <motion.span
-            whileTap={{ scale: 0.9 }}
-            animate={{
-              scale: likePulse[p.id]
-                ? [1, 1.4, 1]
-                : isLiked
-                ? [1, 1.15, 1]
-                : 1,
-            }}
-            transition={{ duration: 0.3 }}
-            className="flex items-center justify-center"
-          >
-            {isLiked ? (
-              <FaHeart className="text-red-600" />
-            ) : (
-              <FaRegHeart className="text-lit-brown" />
-            )}
-          </motion.span>
-          <span>{p.likeCount || 0}</span>
-        </button>
-      </td>
+                  {/* Likes */}
+                  <td className="py-2 px-3 text-center flex justify-center">
+                    <button
+                      onClick={() => handleLikeToggle(p.id)}
+                      className="px-3 py-1 rounded-lg font-medium transition flex items-center justify-center gap-2 bg-lit-gold text-lit-brown hover:bg-lit-gold/95"
+                      style={{ fontFamily: "'Poppins', sans-serif" }}
+                    >
+                      <motion.span
+                        whileTap={{ scale: 0.9 }}
+                        animate={{
+                          scale: likePulse[p.id]
+                            ? [1, 1.4, 1]
+                            : isLiked
+                            ? [1, 1.15, 1]
+                            : 1,
+                        }}
+                        transition={{ duration: 0.3 }}
+                        className="flex items-center justify-center"
+                      >
+                        {isLiked ? (
+                          <FaHeart className="text-red-600" />
+                        ) : (
+                          <FaRegHeart className="text-lit-brown" />
+                        )}
+                      </motion.span>
+                      <span>{p.likeCount || 0}</span>
+                    </button>
+                  </td>
 
-      {/* Status */}
-      <td className="py-2 px-3">
-        <span
-          className={`px-3 py-1 rounded-full text-sm font-medium ${
-            status === "Winner"
-              ? "bg-lit-gold text-lit-brown"
-              : status === "Reviewed"
-              ? "bg-lit-terra text-lit-cream"
-              : "bg-lit-muted text-lit-brown"
-          }`}
-          style={{ fontFamily: "'Tangerine', serif" }}
-        >
-          {status}
-        </span>
-      </td>
+                  {/* Status */}
+                  <td className="py-2 px-3">
+                    <span
+                      className={`px-3 py-1 rounded-full text-sm font-medium ${
+                        status === "Winner"
+                          ? "bg-lit-gold text-lit-brown"
+                          : status === "Reviewed"
+                          ? "bg-lit-terra text-lit-cream"
+                          : "bg-lit-muted text-lit-brown"
+                      }`}
+                      style={{ fontFamily: "'Tangerine', serif" }}
+                    >
+                      {status}
+                    </span>
+                  </td>
 
-      {/* Goodies - MANUAL CONTROL ONLY */}
-      <td className="py-2 px-3 text-center whitespace-nowrap">
-        <span
-          className={`px-3 py-1 rounded-full text-sm font-medium ${
-            goodies // <--- This now checks the DB variable, NOT the rank
-              ? "bg-lit-brown text-lit-cream"
-              : "bg-lit-muted text-lit-brown"
-          }`}
-          style={{ fontFamily: "'Tangerine', serif" }}
-        >
-          {goodies ? "🎁 Yes" : "Next Up"}
-        </span>
-      </td>
-    </tr>
-  );
-})}
+                  {/* Goodies - MANUAL CONTROL ONLY */}
+                  <td className="py-2 px-3 text-center whitespace-nowrap">
+                    <span
+                      className={`px-3 py-1 rounded-full text-sm font-medium ${
+                        goodies
+                          ? "bg-lit-brown text-lit-cream"
+                          : "bg-lit-muted text-lit-brown"
+                      }`}
+                      style={{ fontFamily: "'Tangerine', serif" }}
+                    >
+                      {goodies ? "🎁 Yes" : "Next Up"}
+                    </span>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
