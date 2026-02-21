@@ -2,7 +2,8 @@
 
 import Leaderboard from "./pages/Leaderboard";
 import "./App.css";
-import { Analytics } from "@vercel/analytics/react"; // 👈 import here
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
 
       {/* 👇 Add Analytics at the very bottom */}
       <Analytics />
+      <SpeedInsights />
     </div>
   );
 }
